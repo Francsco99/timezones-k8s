@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timezones-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timezones
+  template:
+    metadata:
+      labels:
+        app: timezones
+    spec:
+      containers:
+        - name: timezones
+          image: timezones-app
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+

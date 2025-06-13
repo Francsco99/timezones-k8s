@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: timezones-statefulset
+spec:
+  selector:
+    matchLabels:
+      app: timezones
+  serviceName: "timezones"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: timezones
+    spec:
+      containers:
+        - name: timezones
+          image: timezones-app
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+
